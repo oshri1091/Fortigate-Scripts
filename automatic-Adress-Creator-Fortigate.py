@@ -12,7 +12,7 @@ def create_address_list_file (address_list):
 		for address in address_list:
 			f.write("edit H-" + address + "\nset subnet " + address + " 255.255.255.255" + "\nnext\n")
 		f.write("end")
-		f.write("\nconfig firewall addrgrp\nedit "+ group_name + "\nset member ")
+		f.write("\nconfig firewall addrgrp\nedit "+ group_name + "\nappend member ")
 		for address in address_list:
 			f.write("H-" + address + " ")
 		f.write("\nnext\nend")
