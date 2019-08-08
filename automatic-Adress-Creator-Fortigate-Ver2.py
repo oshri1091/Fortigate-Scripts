@@ -1,8 +1,6 @@
-WOLCOME_MASSAGE = "\n\t\tWelcome!!!\n\t\tThis Moudle Create by Oshri Rabani - https://cybersecil.com . Enjoy!\n"
+WELCOME_MASSAGE = "\n\t\tWelcome!!!\n\t\tThis Moudle Create by Oshri Rabani - https://cybersecil.com . Enjoy!\n"
 address_list = []
 add_to_group = False
-check_group_add = ""
-group_name = ""
 
 
 def create_address_list_file (address_list):
@@ -29,6 +27,7 @@ file_path = str(input("Please Enter file location of your address list:\n" ))
 file_read = open(file_path, "r")
 for line in file_read:
 	address_list.append(line.strip())
+file_read.close()
 file_name_export = str(input("Enter file name to export the address list (This will Be save in the currect Directory) :\n" ))
 check_group_add = str(input("if you Want to add your address list to address group, please enter YES, if you don't have just write NO:\n"))
 if check_group_add == "YES": 
