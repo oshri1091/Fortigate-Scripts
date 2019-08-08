@@ -10,15 +10,17 @@ def create_address_list_file (address_list):
 	f.write("config firewall address\n")
 	if add_to_group:
 		for address in address_list:
-			f.write("edit H-" + address + "\nset subnet " + address + " 255.255.255.255" + "\nnext\n")
+			full_address = address.split('/')
+			f.write("edit N-" + address + "\nset subnet " + full_address[0] + "/" + full_address[1] + "\nnext\n")
 		f.write("end")
 		f.write("\nconfig firewall addrgrp\nedit "+ group_name + "\nappend member ")
 		for address in address_list:
-			f.write("H-" + address + " ")
+			f.write("N-" + address + " ")
 		f.write("\nnext\nend")
 	else:
 		for address in address_list:
-			f.write("edit H-" + address + "\nset subnet " + address + " 255.255.255.255" + "\nnext\n")
+			full_address = address.split('/')
+			f.write("edit N-" + address + "\nset subnet " + full_address[0] + "/" + full_address[1] + "\nnext\n")
 		f.write("end")
 	f.close()
 
